@@ -1,0 +1,5 @@
+- resource.attributes.each do |_, value|
+  %td= value
+-# FIXME: edit_polymorphic_path not working
+%td= link_to 'Edit', "#{polymorphic_path(resource)}/edit"
+-# TODO: Add deletion, break into partials

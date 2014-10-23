@@ -1,0 +1,8 @@
+%html
+  %head
+    %title Badmin
+    = stylesheet_link_tag 'badmin/application', media: :all
+    = javascript_include_tag 'badmin/application'
+    = csrf_meta_tags
+  %body
+    .container= yield

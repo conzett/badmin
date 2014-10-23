@@ -1,0 +1,10 @@
+.row
+  .col-md-8.col-md-offset-2
+    %h1= @resources.model.model_name.human.pluralize
+    %table.table.table-striped.table-condensed
+      %thead
+        - @resources.klass.column_names.each do  |key, _|
+          -# TODO: Humanized attribute name
+          %th= key
+        %th
+      %tbody= render partial: 'resource', collection: @resources

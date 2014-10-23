@@ -1,0 +1,16 @@
+-# TODO: If this is an association wrap in a well
+- form_attributes(f.object).each do |attribute|
+  = f.input attribute, f.object.options_hash[attribute] || {}
+
+- if f.object.forms.any?
+  %h2 Associations
+
+  - f.object.forms.each do |form|
+    %h3= form.association_name.capitalize
+    = f.simple_fields_for form.association_name do |association|
+      .nested-fields.well
+        -# TODO: Move partial fallback rendering to partial method in base form class
+        = render partial: form.partial, locals: { f: association } rescue render partial: 'application_fields', locals: { f: association }
+        = link_to_remove_association 'Delete', association, class: 'btn btn-danger'
+    .links
+      = link_to_add_association "Add a #{form.association_name}", f, form.association_name, partial: 'application_fields'

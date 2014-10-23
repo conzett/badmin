@@ -1,0 +1,6 @@
+.row
+  .col-md-8.col-md-offset-2
+    %h1= @form.model.class.model_name.human
+    = simple_form_for @form, class: 'form' do |f|
+      = render partial: @form.partial, locals: { f: f } rescue render partial: 'application_fields', locals: { f: f }
+      = f.button :submit, class: 'btn btn-primary'
